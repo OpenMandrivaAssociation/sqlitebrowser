@@ -8,7 +8,6 @@ Source0: http://heanet.dl.sourceforge.net/sourceforge/sqlitebrowser/%{name}-%{ve
 License: Public Domain
 Group: System/Configuration/Other
 Url: http://sqlitebrowser.sourceforge.net/index.html
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	qt3-devel
 
 %description
