@@ -1,15 +1,15 @@
-
+%define beta b1
 Summary: Design and edit database files compatible with SQLite
 Name: sqlitebrowser
-Version: 1.3
-Release: %mkrel 7
-Source0: http://heanet.dl.sourceforge.net/sourceforge/sqlitebrowser/%{name}-%{version}-src.tar.gz
-#Source1: http://heanet.dl.sourceforge.net/sourceforge/sqlitebrowser/%{name}-%{version}-src.tar.gz
+Version: 2.0
+Release: %mkrel -c %beta 1
+Source0: http://heanet.dl.sourceforge.net/sourceforge/sqlitebrowser/%{name}_200_%{beta}_src.tar.gz
+Patch0: sqlitebrowser-2.0-fix-str-fmt.patch
 License: Public Domain
 Group: System/Configuration/Other
 Url: http://sqlitebrowser.sourceforge.net/index.html
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:	qt3-devel
+BuildRequires: qt4-devel
 
 %description
 SQLite Database Browser is a freeware, public domain, open source 
@@ -32,18 +32,17 @@ SQL commands. Controls and wizards are available for users to:
 
 
 %prep
-%setup -q -n %{name}
+%setup -q -n trunk/%{name}/%{name}
+%patch0 -p0
 
 %build
-qmake 
-make
+%qmake_qt4
+%make
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d -m 755 %{buildroot}/%{_bindir}
-cd sqlitebrowser
 cp sqlitebrowser %{buildroot}/%{_bindir}/
-mv LICENSING ../
 
 %clean
 rm -rf $RPM_BUILD_ROOT
