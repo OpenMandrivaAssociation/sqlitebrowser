@@ -2,7 +2,7 @@
 Summary: Design and edit database files compatible with SQLite
 Name: sqlitebrowser
 Version: 2.0
-Release: %mkrel -c %beta 1
+Release: %mkrel -c %beta 2
 Source0: http://heanet.dl.sourceforge.net/sourceforge/sqlitebrowser/%{name}_200_%{beta}_src.tar.gz
 Patch0: sqlitebrowser-2.0-fix-str-fmt.patch
 License: Public Domain
