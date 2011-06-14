@@ -2,7 +2,7 @@
 Summary: Design and edit database files compatible with SQLite
 Name: sqlitebrowser
 Version: 2.0
-Release: %mkrel -c %beta 2
+Release: %mkrel -c %beta 3
 Source0: http://heanet.dl.sourceforge.net/sourceforge/sqlitebrowser/%{name}_200_%{beta}_src.tar.gz
 Patch0: sqlitebrowser-2.0-fix-str-fmt.patch
 License: Public Domain
@@ -43,6 +43,21 @@ SQL commands. Controls and wizards are available for users to:
 rm -rf $RPM_BUILD_ROOT
 install -d -m 755 %{buildroot}/%{_bindir}
 cp sqlitebrowser %{buildroot}/%{_bindir}/
+mkdir -p %buildroot%_datadir/applications
+cat > %buildroot%_datadir/applications/mandriva-%name.desktop << EOF
+[Desktop Entry]
+Name=SQLite database browser
+Comment=GUI editor for SQLite databases
+TryExec=sqlitebrowser
+Exec=sqlitebrowser
+Icon=sqlitebrowser
+Terminal=false
+Type=Application
+Categories=Development;Database;Qt;
+MimeType=application/x-sqlite3;
+EOF
+
+install -m 644 -D images/128.png %buildroot%_datadir/icons/hicolor/128x128/apps/%name.png
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -51,5 +66,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %doc LICENSING
 %{_bindir}/sqlitebrowser
-
+%_datadir/applications/mandriva-%name.desktop
+%_datadir/icons/hicolor/128x128/apps/%name.png
 
