@@ -1,9 +1,10 @@
-%define beta b1
+%define svn r68
 Summary: Design and edit database files compatible with SQLite
 Name: sqlitebrowser
 Version: 2.0
-Release: %mkrel -c %beta 3
-Source0: http://heanet.dl.sourceforge.net/sourceforge/sqlitebrowser/%{name}_200_%{beta}_src.tar.gz
+Release: %mkrel -c %svn 1
+Source0: sqlitebrowser-%svn.tar.xz
+#Source0: http://heanet.dl.sourceforge.net/sourceforge/sqlitebrowser/%{name}_200_%{beta}_src.tar.gz
 Patch0: sqlitebrowser-2.0-fix-str-fmt.patch
 License: Public Domain
 Group: System/Configuration/Other
@@ -32,8 +33,9 @@ SQL commands. Controls and wizards are available for users to:
 
 
 %prep
-%setup -q -n trunk/%{name}/%{name}
-%patch0 -p0
+%setup -q -n %{name}/%{name}
+%patch0 -p1
+chmod 644 sqlitebrowser/*txt
 
 %build
 %qmake_qt4
@@ -41,6 +43,7 @@ SQL commands. Controls and wizards are available for users to:
 
 %install
 rm -rf $RPM_BUILD_ROOT
+cd sqlitebrowser
 install -d -m 755 %{buildroot}/%{_bindir}
 cp sqlitebrowser %{buildroot}/%{_bindir}/
 mkdir -p %buildroot%_datadir/applications
@@ -64,7 +67,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%doc LICENSING
+%doc sqlitebrowser/*.txt
 %{_bindir}/sqlitebrowser
 %_datadir/applications/mandriva-%name.desktop
 %_datadir/icons/hicolor/128x128/apps/%name.png
