@@ -1,0 +1,13 @@
+Index: sqlitebrowser/sqlitebrowser/edittableform.cpp
+===================================================================
+--- sqlitebrowser/sqlitebrowser/edittableform.cpp	(Revision 68)
++++ sqlitebrowser/sqlitebrowser/edittableform.cpp	(Arbeitskopie)
+@@ -86,7 +86,7 @@
+        QApplication::setOverrideCursor( Qt::waitCursor ); // this might take time
+        modified = true;
+        QString newName = renTableForm->getTableName();
+-       qDebug(newName);
++       qDebug("%s", newName.constData());
+        QString sql;
+        //do the sql rename here
+        //if (!pdb->executeSQL(QString("BEGIN TRANSACTION;"))) goto rollback;
