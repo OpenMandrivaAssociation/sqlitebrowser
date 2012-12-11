@@ -1,0 +1,75 @@
+diff -urw trunk-orig/sqlitebrowser/sqlitebrowser/sqlbrowser_util.c trunk/sqlitebrowser/sqlitebrowser/sqlbrowser_util.c
+--- trunk-orig/sqlitebrowser/sqlitebrowser/sqlbrowser_util.c	2009-12-10 17:31:19.000000000 +0100
++++ trunk/sqlitebrowser/sqlitebrowser/sqlbrowser_util.c	2010-11-22 13:19:37.507718293 +0100
+@@ -1,10 +1,10 @@
+ #include "sqlbrowser_util.h"
+-#include "sqlite_source/sqlite3.h"
++#include <sqlite3.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+ 
+-#include "sqlite_source/sqlite3.h"
++#include <sqlite3.h>
+ 
+ /*following routines extracted from shell.c for dump support*/
+ 
+diff -urw trunk-orig/sqlitebrowser/sqlitebrowser/sqlbrowser_util.h trunk/sqlitebrowser/sqlitebrowser/sqlbrowser_util.h
+--- trunk-orig/sqlitebrowser/sqlitebrowser/sqlbrowser_util.h	2005-03-23 15:56:47.000000000 +0100
++++ trunk/sqlitebrowser/sqlitebrowser/sqlbrowser_util.h	2010-11-22 13:19:56.832930843 +0100
+@@ -6,7 +6,7 @@
+ #endif
+ 
+ #include <ctype.h>
+-#include "sqlite_source/sqlite3.h"
++#include <sqlite3.h>
+ #include <stdio.h>
+ 
+ 
+diff -urw trunk-orig/sqlitebrowser/sqlitebrowser/sqlitebrower.pro trunk/sqlitebrowser/sqlitebrowser/sqlitebrowser/sqlitebrowser.pro
+--- sqlitebrowser/sqlitebrowser/sqlitebrowser/sqlitebrowser.pro	2009-12-10 16:45:36.000000000 +0100
++++ sqlitebrowser/sqlitebrowser/sqlitebrowser/sqlitebrowser.pro	2010-11-22 13:28:59.034001759 +0100
+@@ -1,14 +1,12 @@
+ QT += qt3support
+ TEMPLATE = app
+ LANGUAGE = C++
+-INCLUDEPATH += sqlite_source/
+ CONFIG += qt \
+     warn_on
+ HEADERS += extendedmainform.h \
+     sqlitebrowsertypes.h \
+     sqlitedb.h \
+     sqlbrowser_util.h \
+-    sqlite_source/sqlite3.h \
+     aboutform.h \
+     addfieldform.h \
+     addfieldtypeform.h \
+@@ -32,7 +30,6 @@
+     browsermain.cpp \
+     sqlitedb.cpp \
+     sqlbrowser_util.c \
+-    sqlite_source/sqlite3.c \
+     aboutform.cpp \
+     addfieldform.cpp \
+     addfieldtypeform.cpp \
+@@ -70,6 +67,7 @@
+     UI_DIR = .ui
+     MOC_DIR = .moc
+     OBJECTS_DIR = .obj
++    LIBS += -lsqlite3
+ }
+ win32:RC_FILE = winapp.rc
+ mac { 
+
+diff -urw trunk-orig/sqlitebrowser/sqlitebrowser/sqlitedb.h trunk/sqlitebrowser/sqlitebrowser/sqlitedb.h
+--- sqlitebrowser/sqlitebrowser/sqlitebrowser/sqlitedb.h.orig	2012-01-09 11:00:29.457297295 +0100
++++ sqlitebrowser/sqlitebrowser/sqlitebrowser/sqlitedb.h	2012-01-09 11:02:10.693031672 +0100
+@@ -7,7 +7,7 @@
+ #include <q3valuelist.h>
+ #include <qobject.h>
+ #include "sqllogform.h"
+-#include "sqlite3.h"
++#include <sqlite3.h>
+ #include "sqlitebrowsertypes.h"
+ 
+ #define MAX_DISPLAY_LENGTH 255
