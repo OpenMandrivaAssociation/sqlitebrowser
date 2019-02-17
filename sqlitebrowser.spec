@@ -10,7 +10,11 @@ Group:      System/Configuration/Other
 Url:        https://github.com/sqlitebrowser
 Source0:    https://github.com/sqlitebrowser/sqlitebrowser/archive/%name-%{version}-%{snapshot}.tar.gz 
 
-BuildRequires: qt5-devel
+#BuildRequires: qt5-devel
+BuildRequires: cmake(Qt5Core)
+BuildRequires: cmake(Qt5LinguistTools)
+BuildRequires: cmake(Qt5PrintSupport)
+BuildRequires: cmake(Qt5Test)
 BuildRequires: sqlite3-devel
 
 %description
