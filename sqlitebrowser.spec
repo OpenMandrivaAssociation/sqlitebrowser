@@ -1,20 +1,16 @@
-%define beta b1
-%define svn  r68
+%define snapshot 20190217
 
 Name: sqlitebrowser
-Version: 2.0
-Release: %mkrel -c %svn 1
+Version: 3.11.x
+Release: 1
 
 Summary:    Design and edit database files compatible with SQLite
 License:    Public Domain
 Group:      System/Configuration/Other
-Url:        http://sqlitebrowser.sourceforge.net/index.html
-#Source0:    http://heanet.dl.sourceforge.net/sourceforge/sqlitebrowser/%{name}_200_%{beta}_src.tar.gz
-Source0:    http://heanet.dl.sourceforge.net/sourceforge/sqlitebrowser/%{name}-%{svn}.tar.xz
-Patch0:     sqlitebrowser-2.0-fix-str-fmt.patch
-Patch1:     sqlitebrowser-2.0-use_system_sqlite.patch
+Url:        https://github.com/sqlitebrowser
+Source0:    https://github.com/sqlitebrowser/sqlitebrowser/archive/%name-%{version}-%{snapshot}.tar.gz 
 
-BuildRequires: qt4-devel
+BuildRequires: qt5-devel
 BuildRequires: sqlite3-devel
 
 %description
@@ -26,18 +22,18 @@ spreadsheet-like interface, without the need to learn complicated
 SQL commands.
 
 %prep
-%setup -q -n %{name}/%{name}/%{name}
-%patch0 -p0
-%patch1 -p3
+%setup -q -n %{name}-%{version}-%{snapshot}
+
 chmod 644 *txt
 
 %build
-%qmake_qt4
-%make
+%cmake .
+
+%make_build 
 
 %install
-install -d -m 755 %{buildroot}/%{_bindir}
-cp sqlitebrowser %{buildroot}/%{_bindir}/
+cd build
+%make_install 
 
 install -d -m 755 %{buildroot}%{_datadir}/applications/
 cat >%{buildroot}%{_datadir}/applications/%{name}.desktop <<EOF
@@ -53,11 +49,10 @@ Categories=Development;Database;Qt;
 MimeType=application/x-sqlite3;
 EOF
 
-install -m 644 -D images/128.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/%{name}.png
-
 
 %files
 %doc *.txt
 %{_bindir}/sqlitebrowser
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/128x128/apps/%{name}.png
+%{_datadir}/icons/hicolor/256x256/apps/%{name}.png
+%{_datadir}/appdata/sqlitebrowser.desktop.appdata.xml
