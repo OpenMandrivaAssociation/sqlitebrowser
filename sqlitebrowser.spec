@@ -59,9 +59,9 @@ Categories=Development;Database;Qt;
 MimeType=application/x-sqlite3;
 EOF
 
-mkdir -p %{buildroot}/usr/lib64
-cp libs/qhexedit/libqhexedit.so %{buildroot}/usr/lib64/
-cp libs/qcustomplot-source/libqcustomplot.so %{buildroot}/usr/lib64/
+mkdir -p %{buildroot}/%{_libdir}
+cp libs/qhexedit/libqhexedit.so %{buildroot}/%{_libdir}
+cp libs/qcustomplot-source/libqcustomplot.so %{buildroot}/%{_libdir}
 
 %files
 %doc *.txt
