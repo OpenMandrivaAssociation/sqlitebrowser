@@ -16,7 +16,7 @@ BuildRequires: cmake(Qt5PrintSupport)
 BuildRequires: cmake(Qt5Test)
 BuildRequires: sqlite3-devel
 BuildRequires: antlr-C++
-BuildRequires: %{_lib}qscintilla_qt5-devel
+BuildRequires: qscintilla-qt5-devel
 
 #Requires: antlr
 #Requires: customplot
