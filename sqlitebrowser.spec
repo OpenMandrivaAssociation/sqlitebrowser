@@ -8,7 +8,7 @@ License:    Public Domain
 Group:      System/Configuration/Other
 Url:        https://github.com/sqlitebrowser
 Source0:    https://github.com/sqlitebrowser/sqlitebrowser/archive/%name-%{version}.tar.gz 
-#Patch0:	    fix-cmake-qscinitlla2-search.patch
+Patch0:	    fix-cmake-qscinitlla2-search.patch
 BuildRequires: qt5-devel
 BuildRequires: cmake(Qt5Core)
 BuildRequires: cmake(Qt5LinguistTools)
@@ -18,10 +18,8 @@ BuildRequires: sqlite3-devel
 BuildRequires: antlr-C++
 BuildRequires: qscintilla-qt5-devel
 
-#Requires: antlr
-#Requires: customplot
-#Requires: qhexedit
-#Requires: qscintilla
+Requires: antlr
+Requires: qscintilla
 
 %description
 SQLite Database Browser is a freeware, public domain, open source 
@@ -37,7 +35,8 @@ SQL commands.
 chmod 644 *txt
 
 %build
-%cmake -DQSCINTILLA_INCLUDE_DIR=/usr/include/qt5/Qsci -DQSCINTILLA_LIBRARY=/usr/lib64/libqscintilla2_qt5.so  .
+%cmake .
+#%%cmake -DQSCINTILLA_INCLUDE_DIR=/usr/include/qt5/Qsci -DQSCINTILLA_LIBRARY=/usr/lib64/libqscintilla2_qt5.so  .
 
 %make_build 
 
