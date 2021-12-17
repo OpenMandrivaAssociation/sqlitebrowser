@@ -8,7 +8,7 @@ License:    Public Domain
 Group:      System/Configuration/Other
 Url:        https://github.com/sqlitebrowser
 Source0:    https://github.com/sqlitebrowser/sqlitebrowser/archive/%name-%{version}.tar.gz 
-Patch0:	    fix-cmake-qscinitlla2-search.patch
+
 BuildRequires: qt5-devel
 BuildRequires: cmake(Qt5Core)
 BuildRequires: cmake(Qt5LinguistTools)
