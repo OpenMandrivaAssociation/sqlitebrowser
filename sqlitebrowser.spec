@@ -1,6 +1,6 @@
 
 Name: sqlitebrowser
-Version: 3.11.2
+Version: 3.12.2
 Release: 1
 
 Summary:    Design and edit database files compatible with SQLite
