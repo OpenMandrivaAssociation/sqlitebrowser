@@ -1,6 +1,6 @@
 
 Name: sqlitebrowser
-Version: 3.11.2
+Version: 3.12.2
 Release: 1
 
 Summary:    Design and edit database files compatible with SQLite
@@ -8,7 +8,7 @@ License:    Public Domain
 Group:      System/Configuration/Other
 Url:        https://github.com/sqlitebrowser
 Source0:    https://github.com/sqlitebrowser/sqlitebrowser/archive/%name-%{version}.tar.gz 
-Patch0:	    fix-cmake-qscinitlla2-search.patch
+
 BuildRequires: qt5-devel
 BuildRequires: cmake(Qt5Core)
 BuildRequires: cmake(Qt5LinguistTools)
@@ -19,7 +19,7 @@ BuildRequires: antlr-C++
 BuildRequires: qscintilla-qt5-devel
 
 Requires: antlr
-Requires: qscintilla
+Recommends: qscintilla
 
 %description
 SQLite Database Browser is a freeware, public domain, open source 
@@ -67,6 +67,6 @@ cp libs/qcustomplot-source/libqcustomplot.so %{buildroot}/%{_libdir}
 %{_bindir}/sqlitebrowser
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/256x256/apps/%{name}.png
-%{_datadir}/appdata/sqlitebrowser.desktop.appdata.xml
+%{_datadir}/metainfo/sqlitebrowser.desktop.appdata.xml
 %{_libdir}/libqhexedit.so
 %{_libdir}/libqcustomplot.so
