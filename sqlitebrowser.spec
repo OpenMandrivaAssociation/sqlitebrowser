@@ -19,7 +19,7 @@ BuildRequires: antlr-C++
 BuildRequires: qscintilla-qt5-devel
 
 Requires: antlr
-Requires: qscintilla
+Recommends: qscintilla
 
 %description
 SQLite Database Browser is a freeware, public domain, open source 
