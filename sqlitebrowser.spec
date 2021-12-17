@@ -67,6 +67,6 @@ cp libs/qcustomplot-source/libqcustomplot.so %{buildroot}/%{_libdir}
 %{_bindir}/sqlitebrowser
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/256x256/apps/%{name}.png
-%{_datadir}/appdata/sqlitebrowser.desktop.appdata.xml
+%{_datadir}/metainfo/sqlitebrowser.desktop.appdata.xml
 %{_libdir}/libqhexedit.so
 %{_libdir}/libqcustomplot.so
